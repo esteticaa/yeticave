@@ -5,7 +5,7 @@ $user_name = 'esteticaa'; // укажите здесь ваше имя
 
 $mains = [
     [
-        'eng' => 'board',
+        'eng' => 'boards',
         'rus' => 'Доски и лыжи',
     ],
     [
