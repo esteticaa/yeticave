@@ -3,7 +3,32 @@ $is_auth = rand(0, 1);
 
 $user_name = 'esteticaa'; // укажите здесь ваше имя
 
-$main = ['Доски и лыжи', 'Крепления', 'Ботинки', 'Одежда', 'Инструменты', 'Разное'];
+$mains = [
+    [
+        'eng' => 'board',
+        'rus' => 'Доски и лыжи',
+    ],
+    [
+        'eng' => 'attachment',
+        'rus' => 'Крепления',
+    ],
+    [
+        'eng' => 'boots',
+        'rus' => 'Ботинки',
+    ],
+    [
+        'eng' => 'clothing',
+        'rus' => 'Одежда',
+    ],
+    [
+        'eng' => 'tools',
+        'rus' => 'Инструменты',
+    ],
+    [
+        'eng' => 'other',
+        'rus' => 'Разное',
+    ],
+];
 $info = [
     [
         'name' => '2014 Rossignol District Snowboard',
@@ -96,10 +121,10 @@ $info = [
         <p class="promo__text">На нашем интернет-аукционе ты найдёшь самое эксклюзивное сноубордическое и горнолыжное снаряжение.</p>
         <ul class="promo__list">
             <?php
-            foreach ($main as $q)
+            foreach ($mains as $q)
             {?>
-                <li class="promo__item promo__item--boards">
-                <a class="promo__link" href="pages/all-lots.html"><?=$q?></a>
+                <li class="promo__item promo__item--<?=$q['eng']?>">
+                <a class="promo__link" href="pages/all-lots.html"><?=$q['rus']?></a>
             </li>
             <?php
 
@@ -119,7 +144,7 @@ $info = [
             <!--заполните этот список из массива с товарами-->
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="" width="350" height="260" alt="">
+                    <img src="<?=$q['url']?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
                     <span class="lot__category"><?=$q['categorie']?></span>
@@ -148,10 +173,10 @@ $info = [
     <nav class="nav">
         <ul class="nav__list container">
             <?php
-            foreach ($main as $q)
+            foreach ($mains as $q)
             {?>
                 <li class="nav__item">
-                    <a href="pages/all-lots.html"><?=$q?></a>
+                    <a href="pages/all-lots.html"><?=$q['rus']?></a>
                 </li>
                 <?php
 
