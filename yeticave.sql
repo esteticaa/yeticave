@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 13 2022 г., 11:33
+-- Время создания: Май 13 2022 г., 11:44
 -- Версия сервера: 5.7.33-log
 -- Версия PHP: 7.1.33
 
@@ -64,8 +64,7 @@ CREATE TABLE `stavka` (
   `id_stavka` int(11) NOT NULL,
   `date` datetime NOT NULL,
   `summa` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_lot` int(11) NOT NULL
+  `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -81,9 +80,7 @@ CREATE TABLE `user` (
   `password` varchar(225) NOT NULL,
   `image` varchar(225) NOT NULL,
   `contact` varchar(225) NOT NULL,
-  `date_regisrtatoin` datetime NOT NULL,
-  `id_lot` int(11) NOT NULL,
-  `id_stavka` int(11) NOT NULL
+  `date_regisrtatoin` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -110,16 +107,13 @@ ALTER TABLE `lot`
 --
 ALTER TABLE `stavka`
   ADD PRIMARY KEY (`id_stavka`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_lot` (`id_lot`);
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Индексы таблицы `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD KEY `id_lot` (`id_lot`),
-  ADD KEY `id_stavka` (`id_stavka`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
@@ -157,15 +151,15 @@ ALTER TABLE `user`
 -- Ограничения внешнего ключа таблицы `lot`
 --
 ALTER TABLE `lot`
-  ADD CONSTRAINT `lot_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`),
-  ADD CONSTRAINT `lot_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
-  ADD CONSTRAINT `lot_ibfk_3` FOREIGN KEY (`id_winner`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `lot_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `lot_ibfk_2` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `lot_ibfk_3` FOREIGN KEY (`id_winner`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Ограничения внешнего ключа таблицы `user`
+-- Ограничения внешнего ключа таблицы `stavka`
 --
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_stavka`) REFERENCES `stavka` (`id_stavka`);
+ALTER TABLE `stavka`
+  ADD CONSTRAINT `stavka_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
