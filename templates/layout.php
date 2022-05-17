@@ -57,7 +57,7 @@
             foreach ($mains as $q)
             {?>
                 <li class="nav__item">
-                    <a href="pages/all-lots.html"><?=$q['rus']?></a>
+                    <a href="pages/all-lots.html"><?=$q['name']?></a>
                 </li>
                 <?php
 

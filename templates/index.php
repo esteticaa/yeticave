@@ -5,8 +5,8 @@
         <?php
         foreach ($mains as $q)
         {?>
-            <li class="promo__item promo__item--<?=$q['eng']?>">
-                <a class="promo__link" href="pages/all-lots.html"><?=$q['rus']?></a>
+            <li class="promo__item promo__item--<?=$q['name_eng']?>">
+                <a class="promo__link" href="pages/all-lots.html"><?=$q['name']?></a>
             </li>
             <?php
 
@@ -26,15 +26,15 @@
             <!--заполните этот список из массива с товарами-->
             <li class="lots__item lot">
                 <div class="lot__image">
-                    <img src="<?=$q['url']?>" width="350" height="260" alt="">
+                    <img src="<?=$q['image']?>" width="350" height="260" alt="">
                 </div>
                 <div class="lot__info">
-                    <span class="lot__category"><?=$q['categorie']?></span>
+                    <span class="lot__category"><?=$q['name']?></span>
                     <h3 class="lot__title"><a class="text-link" href="pages/lot.html"><?=$q['name']?></a></h3>
                     <div class="lot__state">
                         <div class="lot__rate">
                             <span class="lot__amount">Стартовая цена</span>
-                            <span class="lot__cost"><?=sub_format($q["price"])?></span>
+                            <span class="lot__cost"><?=sub_format($q["start_cost"])?></span>
                         </div>
                         <div class="lot__timer timer">
                             <?=timer()?>

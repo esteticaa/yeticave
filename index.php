@@ -10,8 +10,11 @@
         'main' => $main,
         'mains' => $mains,
         'is_auth' => $is_auth,
-        'user_name' => $user_name
+        'user_name' => $user_name,
     ]);
     print($layout_content);
+
+
+
 ?>
 

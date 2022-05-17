@@ -42,5 +42,15 @@ order by data_creation desc;
   SELECT `id_lot`,`categorie`.`name` FROM lot INNER JOIN categorie ON `lot`.`id_categorie` = `categorie`.`id_categorie`;
 //обновить название лота по его идентификатору;
 UPDATE `lot` SET `name`= 'Карина' WHERE `id_lot` = 1;   UPDATE `lot` SET `name`= 'Карина_тест' WHERE `id_lot` = 1;
+//2
+UPDATE lot
+SET name = '2015 Rossignol District Snowboard'
+WHERE id_lot = 1;
 //получить список самых свежих ставок для лота по его идентификатору;
 SELECT  date, summa from stavka where id_lot = 1 order by date
+//2
+SELECT date,
+  summa
+FROM stavka
+WHERE id_lot = 1
+order by date

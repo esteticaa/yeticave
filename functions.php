@@ -1,10 +1,10 @@
 <?php
-
+require_once('data.php');
 $is_auth = rand(0, 1);
 
 $user_name = 'esteticaa'; // укажите здесь ваше имя
 
-$mains = [
+/*$mains = [
     [
         'eng' => 'boards',
         'rus' => 'Доски и лыжи',
@@ -29,8 +29,8 @@ $mains = [
         'eng' => 'other',
         'rus' => 'Разное',
     ],
-];
-$info = [
+];*/
+/*$info = [
     [
         'name' => '2014 Rossignol District Snowboard',
         'categorie' => 'Доски и лыжи',
@@ -68,7 +68,7 @@ $info = [
         'url' => 'img/lot-6.jpg'
     ],
 ];
-
+*/
     function sub_format ($number)
     {
         $number = ceil($number);
