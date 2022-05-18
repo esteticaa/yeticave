@@ -88,7 +88,12 @@ $user_name = 'esteticaa'; // укажите здесь ваше имя
         $now = new DateTime('now');
         $nextdaynight = new DateTime('24:00');
         $interval = $now->diff($nextdaynight);
-        return $interval->format('%h:%i');
+        if($interval ->format('%i')<10){
+            return $interval->format('%h:0%i');
+        }
+        else {
+            return $interval->format('%h:%i');
+        }
     }
 
     function include_template($name, $data) {

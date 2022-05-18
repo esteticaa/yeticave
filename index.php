@@ -1,6 +1,6 @@
 <?php
     require_once('functions.php');
-
+    $connection = new mysqli('127.0.0.1','root','','yeticave');
     $main = include_template('index.php', [
         'mains' => $mains,
         'info' => $info,
