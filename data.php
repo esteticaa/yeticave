@@ -8,9 +8,8 @@
     $mains = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 
-    $sql_1 = 'SELECT * FROM lot';
+    $sql_1 = 'SELECT lot_name,id_lot, categorie.name, description, image, start_cost FROM lot INNER JOIN categorie on lot.id_categorie = categorie.id_categorie';
     $result_1 = mysqli_query($link, $sql_1);
 
     $info = mysqli_fetch_all($result_1, MYSQLI_ASSOC);
 
-    $sql2 = 'SELECT id_lot,name,category.name,description,image,start_price FROM lot INNER JOIN categorie on lot.id_categorie = categorie.id_categorie';
