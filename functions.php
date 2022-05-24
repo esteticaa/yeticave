@@ -108,4 +108,14 @@ $user_name = 'esteticaa'; // укажите здесь ваше имя
         $result = ob_get_clean();
         return $result;
     }
+    function connection(): mysqli
+    {
+        return new mysqli('127.0.0.1','root','','yeticave');
+    }
+    function categorie(mysqli $connection): array
+    {
+        $query = "Select * from categorie order by id_categorie";
+        $categorie_result = $connection->query($query);
+        return $categorie_result->fetch_all(MYSQLI_ASSOC);
+    }
 ?>

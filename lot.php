@@ -1,7 +1,8 @@
 <?php
 require_once "functions.php";
 require_once('data.php');
-
+    $connection = connection();
+    $categorie = categorie($connection);
 
 $id = 0;
 $id = $_GET["id_lot"];

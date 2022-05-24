@@ -1,14 +1,4 @@
-<nav class="nav">
-    <ul class="nav__list container">
-        <?php
-        foreach($mains as $q){
-            ?>
-            <li class="nav__item">
-                <a href="pages/all-lots.html"><?=$q["name"]?></a>
-            </li>
-        <?php } ?>
-    </ul>
-</nav>
+
 <section class="lot-item container">
     <h2><?=$currentLot['lot_name']?></h2>
     <div class="lot-item__content">
