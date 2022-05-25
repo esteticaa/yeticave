@@ -12,4 +12,22 @@
     $result_1 = mysqli_query($link, $sql_1);
 
     $info = mysqli_fetch_all($result_1, MYSQLI_ASSOC);
+    $users = [
+        [
+            'email' => 'ignat.v@gmail.com',
+            'password' => 'ug0GdVMi',
+        ],
+        [
+            'email' => 'kitty_93@li.ru',
+            'password' => 'daecNazD',
+        ],
+        [
+            'email' => 'warrior07@mail.ru',
+            'password' => 'oixb3aL8',
+        ],
+        [
+            'email' => 'burik02@bk.ru',
+            'password' => 'qwerty',
+        ],
+    ];
 

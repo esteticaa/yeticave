@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="16559c8d-e496-46f9-a0be-b48ee96c4ab0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data.php" beforeDir="false" afterPath="$PROJECT_DIR$/data.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lot.php" beforeDir="false" afterPath="$PROJECT_DIR$/lot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/layout.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/lot.php" beforeDir="false" afterPath="$PROJECT_DIR$/templates/lot.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +89,8 @@
       <workItem from="1653034535432" duration="1217000" />
       <workItem from="1653041213922" duration="594000" />
       <workItem from="1653292433748" duration="5236000" />
-      <workItem from="1653373490703" duration="6839000" />
+      <workItem from="1653373490703" duration="9206000" />
+      <workItem from="1653458967831" duration="10262000" />
     </task>
     <servers />
   </component>
