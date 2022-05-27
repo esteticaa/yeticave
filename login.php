@@ -2,59 +2,97 @@
 require_once('functions.php');
 require_once('data.php');
 
-session_start();
+$err = [];
+$message = [];
+$flag = 0;
+$pattern = '/^(?:[a-z0-9]+(?:[-_.]?[a-z0-9]+)?@[a-z0-9_.-]+(?:\.?[a-z0-9]+)?\.[a-z]{2,5})$/i';
+$form = '';
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $form = $_POST;
-        print_r($form);
-        $required = ['email', 'password'];
-        $errors = [];
-        /*foreach ($required as $field) {
-            if (empty($form[$field])) {
-                /*$errors[$field] = 'Это поле надо заполнить';*/
-                /*print('ERROR');*/
-/*            }
-        }*/
-        foreach ($users as $user)
-        {
-            if ($user['email'] == $form['email'])
-            {
-                $email_true = 1;
-                $user = $user['email'];
-            }
-            else
-            {
-                $email_true = 0;
-            }
+$connection = new mysqli('127.0.0.1', 'root', '', 'yeticave');
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $email = $_POST['email'];
+    $pass = $_POST['password'];
+
+    if (empty($email)) {
+        $err['email'] = 'form__item--invalid';
+        $message['email'] = '<span class="form__error">Введите e-mail</span>';
+        $flag = 1;
+    } else {
+        if (!preg_match($pattern, $email)) {
+            $err['email'] = 'form__item--invalid';
+            $message['email'] = '<span class="form__error">Некорректно введен адрес электронной почты</span>';
+            $flag = 1;
         }
-        if($email_true){
-            $_SESSION['user'] = $user;
-            foreach ($users as $user)
-            {
-                if ($user['password'] == $form['password'])
-                {
-                    $password_true = 1;
-                }
-                else
-                {
-                    $password_true = 0;
-                }
-
-            }
-        }
-        print ($email_true);
-        print ($password_true);
     }
+    if (empty($pass)) {
+        $err['password'] = 'form__item--invalid';
+        $message['password'] = '<span class="form__error">Введите пароль</span>';
+        $flag = 1;
+    }
+    if (!empty($err)) {
+        $form = 'form--invalid';
+        $message['form'] = '<span class="form__error form__error--bottom">Пожалуйста, исправьте ошибки в форме.</span>';
+        $flag = 1;
+    }
+    if (!empty($email) && !empty($pass)) {
+        $query = "SELECT * FROM `user` WHERE email = '$email' AND password = '$pass'";
 
-    $main = include_template('login.php', ['username' => $_SESSION['user']['name']]);
+        $query_result = $connection->query($query);
 
+        $result = $query_result->fetch_array();
+
+        if (empty($result)) {
+            $form = 'form--invalid';
+            $message['form'] = '<span class="form__error form__error--bottom">Вы ввели неправильную почту или пароль</span>';
+            $flag = 1;
+
+            $data_main = ['mains' => $mains, 'err' => $err, 'message' => $message, 'form' => $form, 'user' => $user];
+
+            $main = include_template('login.php', $data_main);
+            $layout_content = include_template('layout.php', [
+                'main' => $main,
+                'mains' => $mains,
+                'arrayusers' => $arrayusers,
+                'title' => 'Вход',
+                'user_name' => $user
+            ]);
+
+            print($layout_content);
+            exit();
+        } else {
+            setcookie('user', $result['name'], time() + 3600, "/");
+
+            $connection->close();
+
+            header('Location: index.php');
+        }
+    } else {
+        $data_main = ['mains' => $mains, 'err' => $err, 'message' => $message, 'form' => $form, 'user' => $user];
+
+        $main = include_template('login.php', $data_main);
+        $layout_content = include_template('layout.php', [
+            'main' => $main,
+            'mains' => $mains,
+            'arrayusers' => $arrayusers,
+            'title' => 'Вход',
+            'user' => $user
+        ]);
+
+        print($layout_content);
+    }
+} else {
+    $data_main = ['mains' => $mains, 'err' => $err, 'message' => $message, 'form' => $form, 'user' => $user];
+
+    $main = include_template('login.php', $data_main);
     $layout_content = include_template('layout.php', [
-        'title' => 'Главная страница',
         'main' => $main,
         'mains' => $mains,
-        'is_auth' => $is_auth,
-        'user_name' => $user_name,
+        'arrayusers' => $arrayusers,
+        'title' => 'Вход',
+        'user' => $user
     ]);
 
-print($layout_content);
+    print($layout_content);
+}
+

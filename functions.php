@@ -96,12 +96,17 @@ $user_name = 'esteticaa'; // укажите здесь ваше имя
         }
     }
 
-    function include_template($name, $data) {
+    function include_template($name, $data)
+    {
+        $user = $_COOKIE['user'] ?? "";
+        $is_auth = isset($_COOKIE['user']);
         $name = 'templates/' . $name;
         $result = '';
         if (!file_exists($name)) {
             return $result;
         }
+        $data['is_auth'] = $is_auth;
+        $data['user'] = $user;
         ob_start();
         extract($data);
         require($name);

@@ -10,6 +10,7 @@
             <p class="lot-item__description"><?=$currentLot["description"]?></p>
         </div>
         <div class="lot-item__right">
+            <?php if(!empty($user)){?>
             <div class="lot-item__state">
                 <div class="lot-item__timer timer">
                     <?=timer()?>
@@ -17,7 +18,7 @@
                 <div class="lot-item__cost-state">
                     <div class="lot-item__rate">
                         <span class="lot-item__amount">Текущая цена</span>
-                        <span class="lot-item__cost">10 999</span>
+                        <span class="lot-item__cost"><?=sub_format($lot['start_cost'])?></span>
                     </div>
                     <div class="lot-item__min-cost">
                         Мин. ставка <span>12 000 р</span>
@@ -32,6 +33,9 @@
                     <button type="submit" class="button">Сделать ставку</button>
                 </form>
             </div>
+    <?php
+            }
+            ?>
             <div class="history">
                 <h3>История ставок (<span>10</span>)</h3>
                 <table class="history__list">

@@ -11,7 +11,7 @@
         'main' => $main,
         'mains' => $mains,
         'is_auth' => $is_auth,
-        'user_name' => $user_name,
+        'user_name' => $user,
     ]);
     print($layout_content);
 
